@@ -19,7 +19,6 @@ const App = () => {
             try {
                 const response = await axios.get(`/api/getJobs?type=${typeFilter}&keyword=${keyword}&filterBy=${filterBy}`);
                 const jobs = response.data.allJobs;
-                console.log(jobs);
                 setJobs(jobs);
             } catch (error) {
                 setError(true);
@@ -45,7 +44,7 @@ const App = () => {
       <>
       <AppBar/>
       <Grid container spacing={10} style={{marginTop:'35px'}}>
-        <Grid item xs={0} md={1}></Grid>
+        <Grid item xs={false} md={1}></Grid>
         <Grid item xs={12} md={10}>
             <Filters 
               onTypeChange={handleTypeFilterChange}
@@ -56,7 +55,7 @@ const App = () => {
             {error && <h3>Can't load jobs. Please try later.</h3>}
             {!error && <JobList jobs={jobs}/>}
         </Grid>
-        <Grid item xs={0} md={1}></Grid>
+        <Grid item xs={false} md={1}></Grid>
         
       </Grid>
       </>
